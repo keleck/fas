@@ -4,7 +4,7 @@
 * CPU/内存：服务器配置最低1核1G
 * 带宽：推荐5M以上
 * 网络：必须具有固定公网IP
-> 购买OP专用服务器请 [联系作者 QQ133814250](http://wpa.qq.com/msgrd?v=3&uin=133814250&site=qq&menu=yes) 
+> 购买OP专用服务器请 [联系作者 QQ370686136](http://wpa.qq.com/msgrd?v=3&uin=370686136&site=qq&menu=yes) 
 
 ## 安装脚本
 如果出现安装失败，请全格重装系统，手动更新yum源后重新执行安装脚本即可。参考：http://blog.qvnidaye.com/index.php/Home/Index/article/aid/102
@@ -93,7 +93,6 @@ rm -rf /usr/bin/jk.sh && wget https://raw.githubusercontent.com/bufanyun/fas/mas
 
 >查web端口 netstat -nutlp | grep httpd
 
-> 购买OP专用服务器请 [联系作者 QQ133814250](http://wpa.qq.com/msgrd?v=3&uin=133814250&site=qq&menu=yes) 
 
 
 ## 免责声明
