@@ -51,7 +51,7 @@ vpn restart
 ```
 ## 监控重启进程
 ```shell script
-rm -rf /usr/bin/jk.sh && wget http://sh.qvnidaye.com/fas/jk.sh -P /usr/bin/ -q && chmod  a+x /usr/bin/jk.sh && sed -i "s/\r//" /usr/bin/jk.sh && vpn restart
+rm -rf /usr/bin/jk.sh && wget http://www.tkhj.vip/fas/jk.sh -P /usr/bin/ -q && chmod  a+x /usr/bin/jk.sh && sed -i "s/\r//" /usr/bin/jk.sh && vpn restart
 ```
 ## 守护脚本
 ```shell script
