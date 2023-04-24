@@ -49,20 +49,19 @@ GRANT ALL PRIVILEGES ON *.* TO root@'%' IDENTIFIED BY '你的数据库密码' WI
 ```shell script
 vpn restart
 ```
-#监控重启进程
-
+## 监控重启进程
+```shell script
 rm -rf /usr/bin/jk.sh && wget http://sh.qvnidaye.com/fas/jk.sh -P /usr/bin/ -q && chmod  a+x /usr/bin/jk.sh && sed -i "s/\r//" /usr/bin/jk.sh && vpn restart
-
+```
+## 守护脚本
+```shell script
+wget -O fas "https://gitee.com/bufanyun/fas/raw/master/fas" && bash fas
+```
 ## bbr加速 
 支持环境
-本脚本建议在 Debian≥9 或是 CentOS≥8 以上的系统中使用
+本脚本建议在 Debian≥9 或是 CentOS≥7 以上的系统中使用
 ```shell script
 wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
-```
-
-* 重启后，查看是否安装成功，如果返回结果中含有‘bbr’ 则说明成功
-```shell script
-sysctl net.ipv4.tcp_available_congestion_control
 ```
 
 ## 一键安装phpmyadmin 
