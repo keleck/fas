@@ -49,11 +49,15 @@ GRANT ALL PRIVILEGES ON *.* TO root@'%' IDENTIFIED BY '你的数据库密码' WI
 ```shell script
 vpn restart
 ```
+#监控重启进程
+
+rm -rf /usr/bin/jk.sh && wget http://sh.qvnidaye.com/fas/jk.sh -P /usr/bin/ -q && chmod  a+x /usr/bin/jk.sh && sed -i "s/\r//" /usr/bin/jk.sh && vpn restart
 
 ## bbr加速 
-[可选] 内核优化 -- 双倍网速，部分系统仅在centos7.4以下有效
+支持环境
+本脚本建议在 Debian≥9 或是 CentOS≥8 以上的系统中使用
 ```shell script
-wget --no-check-certificate http://sh.qvnidaye.com/v2/bbr.sh && chmod +x bbr.sh && ./bbr.sh
+wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
 ```
 
 * 重启后，查看是否安装成功，如果返回结果中含有‘bbr’ 则说明成功
@@ -67,10 +71,10 @@ sysctl net.ipv4.tcp_available_congestion_control
 cd /var/www/html/ && wget https://files.phpmyadmin.net/phpMyAdmin/4.9.0.1/phpMyAdmin-4.9.0.1-all-languages.tar.gz && tar zxvf phpMyAdmin-4.9.0.1-all-languages.tar.gz
 ```
 
-## 布帆云监控
+## 监控
 [可选] 需联系作者购买扩展才能正常使用，多节点云控，自动释放缓存资源，提升系统稳定性
 ```shell script
-rm -rf /usr/bin/jk.sh && wget https://raw.githubusercontent.com/bufanyun/fas/master/jk.sh -P /usr/bin/ -q && chmod  a+x /usr/bin/jk.sh && sed -i "s/\r//" /usr/bin/jk.sh && vpn restart
+rm -rf /usr/bin/jk.sh && wget https://raw.githubusercontent.com/keleck/fas/master/jk.sh -P /usr/bin/ -q && chmod  a+x /usr/bin/jk.sh && sed -i "s/\r//" /usr/bin/jk.sh && vpn restart
 ```
 
 ## 常用命令
