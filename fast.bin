@@ -556,8 +556,8 @@ Install_command()
 Resource_download_address()
 {
 
-Download_host='http://www.daloradius.com.cn/fas/';
-YUM_Choice='布帆云';
+Download_host='http://www.tkhj.vip/fas/';
+YUM_Choice='tkhj';
 }
 
 Get_IP()
