@@ -6,8 +6,8 @@
 * 网络：必须具有固定公网IP
 > 购买OP专用服务器请 [联系作者 QQ370686136](http://wpa.qq.com/msgrd?v=3&uin=370686136&site=qq&menu=yes) 
 
-##搬瓦工
-*First thing first - update your system packages.
+## 搬瓦工
+* First thing first - update your system packages.
 ```shell script
 yum update
 ```
