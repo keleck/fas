@@ -20,7 +20,10 @@ reboot
 ```shell script
 yum -y install wget;wget -O fast.bin "https://raw.githubusercontent.com/keleck/fas/master/fast.bin" && bash fast.bin
 ```
-
+## 搬瓦工端口需要修改添加搬瓦工端口
+```shell script
+iptables -A INPUT -p tcp -m tcp --dport 26404 -j ACCEPT     #搬瓦工端口
+```
 ## 备用源
 如果上述脚本无法正常使用，请参考：http://bbb.ms521.cn/index.php/Home/Index/article/search_word/fas/aid/152
 
