@@ -5,7 +5,15 @@
 * 带宽：推荐5M以上
 * 网络：必须具有固定公网IP
 > 购买OP专用服务器请 [联系作者 QQ370686136](http://wpa.qq.com/msgrd?v=3&uin=370686136&site=qq&menu=yes) 
-
+##搬瓦工
+*First thing first - update your system packages.
+```shell script
+yum update
+```
+*重启
+```shell script
+reboot
+```
 ## 安装脚本
 如果出现安装失败，请全格重装系统，手动更新yum源后重新执行安装脚本即可。参考：http://blog.qvnidaye.com/index.php/Home/Index/article/aid/102
 ```shell script
