@@ -20,9 +20,9 @@ reboot
 ```shell script
 yum -y install wget;wget -O fast.bin "https://raw.githubusercontent.com/keleck/fas/master/fast.bin" && bash fast.bin
 ```
-## 搬瓦工端口需要修改您自己搬瓦工的端口
+## 搬瓦工端口需要自行开放端口
 ```shell script
-iptables -A INPUT -p tcp -m tcp --dport 26404 -j ACCEPT     #搬瓦工端口
+port
 ```
 
 ## 守护进程 
