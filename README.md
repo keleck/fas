@@ -11,7 +11,7 @@
 ```shell script
 yum update
 ```
-*重启
+* 重启
 ```shell script
 reboot
 ```
