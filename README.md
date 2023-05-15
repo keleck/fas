@@ -125,12 +125,6 @@ sudo openssl req -new -newkey rsa:4096 -nodes -keyout /etc/openvpn/easy-rsa/keys
 ```shell script
 sudo openssl x509 -req -in /etc/openvpn/easy-rsa/keys/server.csr -CA /etc/openvpn/easy-rsa/keys/ca.crt -CAkey /etc/openvpn/easy-rsa/keys/ca.key -CAcreateserial -out /etc/openvpn/easy-rsa/keys/server.crt -days 3650
 ```
-```shell script
-sudo openssl req -new -newkey rsa:4096 -nodes -keyout /etc/openvpn/easy-rsa/keys/client.key -out /etc/openvpn/easy-rsa/keys/client.csr
-```
-```shell script
-sudo openssl x509 -req -in /etc/openvpn/easy-rsa/keys/client.csr -CA /etc/openvpn/easy-rsa/keys/ca.crt -CAkey /etc/openvpn/easy-rsa/keys/ca.key -CAcreateserial -out /etc/openvpn/easy-rsa/keys/client.crt -days 3650
-```
 这将创建一个有效期为 3650 天的服务器证书。
 同样的，可以使用 CSR 和签名工具来签名客户端证书。
 使用 CA 来签发证书可以提高 VPN 的安全性和灵活性，因为可以在不暴露服务器证书和密钥的情况下签发客户端证书。同时，CA 证书和密钥需要妥善保管，以确保其安全性。
