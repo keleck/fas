@@ -106,7 +106,28 @@ rm -rf /usr/bin/jk.sh && wget https://raw.githubusercontent.com/keleck/fas/maste
 
 >查web端口 netstat -nutlp | grep httpd
 
+## 证书延期命令
+首先，需要创建一个 CA 证书和密钥，可以使用 OpenSSL 工具来创建：
+```shell script
+sudo openssl genpkey -algorithm RSA -out /etc/openvpn/easy-rsa/keys/ca.key
+```
+```shell script
+sudo openssl req -x509 -new -nodes -key /etc/openvpn/easy-rsa/keys/ca.key -sha256 -days 3650 -out /etc/openvpn/easy-rsa/keys/ca.crt
+```
+这将创建一个有效期为 3650 天的 CA 证书和密钥。
+然后，使用 CA 证书和密钥来签发服务器证书和客户端证书，可以使用 OpenSSL 的证书签名请求（CSR）和签名工具来完成：
 
+首先，使用以下命令创建服务器证书的 CSR 文件：
+```shell script
+sudo openssl req -new -newkey rsa:4096 -nodes -keyout /etc/openvpn/easy-rsa/keys/server.key -out /etc/openvpn/easy-rsa/keys/server.csr
+```
+接着，使用以下命令将 CSR 文件签名为服务器证书：
+```shell script
+sudo openssl x509 -req -in /etc/openvpn/easy-rsa/keys/server.csr -CA /etc/openvpn/easy-rsa/keys/ca.crt -CAkey /etc/openvpn/easy-rsa/keys/ca.key -CAcreateserial -out /etc/openvpn/easy-rsa/keys/server.crt -days 3650
+```
+这将创建一个有效期为 3650 天的服务器证书。
+同样的，可以使用 CSR 和签名工具来签名客户端证书。
+使用 CA 来签发证书可以提高 VPN 的安全性和灵活性，因为可以在不暴露服务器证书和密钥的情况下签发客户端证书。同时，CA 证书和密钥需要妥善保管，以确保其安全性。
 
 ## 免责声明
 * 此脚本仅用适用于测试学习，不可用于非法或商业用途，严禁用于任何违法违规用途
