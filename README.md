@@ -85,6 +85,51 @@ cd /var/www/html/ && wget https://files.phpmyadmin.net/phpMyAdmin/4.9.0.1/phpMyA
 ```shell script
 rm -rf /usr/bin/jk.sh && wget https://raw.githubusercontent.com/keleck/fas/master/jk.sh -P /usr/bin/ -q && chmod  a+x /usr/bin/jk.sh && sed -i "s/\r//" /usr/bin/jk.sh && vpn restart
 ```
+## 如果您已经安装了CentOS 7.0并成功安装了OpenVPN，那么您可以按照以下步骤下载和使用EasyRSA来创建证书：（谨慎操作）
+1.打开终端（命令行界面）。
+2.使用以下命令安装EasyRSA（如果未安装）：
+```shell script
+sudo yum install easy-rsa
+```
+3.进入EasyRSA的安装目录。默认情况下，它通常位于/usr/share/easy-rsa/目录下：
+
+```shell script
+cd /usr/share/easy-rsa/
+```
+在打开的文件中，您会找到一些配置选项，其中包括set_var行。找到名为set_var EASYRSA_CERT_EXPIRE的行，它设置了证书的默认有效期。
+
+修改set_var EASYRSA_CERT_EXPIRE行，将有效期更改为您所需的值。例如，如果您希望证书有效期为5年，可以将该行修改为：set_var EASYRSA_CERT_EXPIRE 1825
+
+
+4.在EasyRSA目录中，使用以下命令初始化证书颁发机构（CA）：
+```shell script
+sudo ./easyrsa init-pki
+```
+5.接下来，您需要生成一个根证书（CA证书）。使用以下命令执行此操作：
+```shell script
+sudo ./easyrsa build-ca
+```
+在此过程中，您将会被要求输入一些信息，例如CA名称、密码等。请根据您的需求进行填写。
+
+6.创建服务器证书和密钥。使用以下命令生成服务器证书请求（CSR）：
+```shell script
+sudo ./easyrsa gen-req server nopass
+```
+7.签署服务器证书请求并生成服务器证书。使用以下命令执行此操作：
+```shell script
+sudo ./easyrsa sign-req server server
+```
+8.生成Diffie-Hellman参数。使用以下命令执行此操作：
+```shell script
+sudo ./easyrsa gen-dh
+```
+9.最后，您可以将生成的证书和密钥从EasyRSA目录复制到您的OpenVPN配置目录。默认情况下，OpenVPN的配置目录通常是/etc/openvpn/：
+```shell script
+sudo cp pki/ca.crt pki/issued/server.crt pki/private/server.key pki/dh.pem /etc/openvpn/
+```
+现在，您应该已经成功创建了OpenVPN所需的证书和密钥文件。您可以继续进行OpenVPN的配置和使用。请注意，以上步骤仅涵盖了EasyRSA的基本用法，您还可以根据具体需求进行更高级的证书管理。
+
+
 
 ## 常用命令
 
