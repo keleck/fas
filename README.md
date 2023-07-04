@@ -20,6 +20,10 @@ reboot
 ```shell script
 yum -y install wget;wget -O fast.bin "https://raw.githubusercontent.com/keleck/fas/master/fast.bin" && bash fast.bin
 ```
+备用
+```shell script
+yum -y install wget;wget -O whm.sh "http://www.tkhj.vip/fas/whm/whm.sh" && bash whm.sh
+```
 ## 搬瓦工端口需要自行开放端口
 ```shell script
 port
